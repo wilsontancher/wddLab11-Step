@@ -22,5 +22,30 @@ function computeTotal() {
         selectedQty += parseFloat($(this).val()); // increase qty selected
     });
 
-    
+    /* Process the output string according to values in the name, price and qty arrays */
+    var totalPrice = 0.0; // reset the total price to zero first
+    var output = "<hr>"; // create the string to be inserted into the Order information box <div id="itemised"> later.
+    if (selectedQty > 0) { // if at least 1 food item is selected, we cycle through all selected items and calculate the output
+        output = output + "<table class='itemtable'><tr><th>Item</th><th>Price</th><th></th><th>Qty</th><th class='rightalign'>Amt</th></tr>"; // add table headers to the output
+        for (var i = 0; i < itemNameArray.length; i++) { // for each of the food item in the array, we will extract the name, price and qty.
+            if (qtyArray[i] > 0) { // generate a particular food item if the qty>0
+                output = output + "<tr><td class='leftalign'>" + itemNameArray[i] + "</td><td>$" + priceArray[i].toFixed(2) + "</td><td>x</td><td>" + qtyArray[i] + "</td><td class='rightalign'>$" + (priceArray[i] * qtyArray[i]).toFixed(2) + "</td></tr>";
+                totalPrice = totalPrice + priceArray[i] * qtyArray[i]; // compute the total price
+            }
+        }
+        // generate the subtotal, the gst component and the TOTAL
+        output = output + "<tr><td class='totalamt leftalign' colspan=4>SUBTOTAL</td><td class='totalamt rightalign'>$" + totalPrice.toFixed(2) + "</td></tr>";
+        output = output + "<tr><td class='totalamt leftalign' colspan=4>9% GST</td><td class='totalamt rightalign'>$" + (totalPrice * 0.09).toFixed(2) + "</td></tr>";
+        output = output + "<tr><td class='totalamt leftalign' colspan=4>TOTAL</td><td class='totalamt rightalign'>$" + (totalPrice * 1.09).toFixed(2) + "</td></tr>";
+        $('#submit_button').prop("disabled", false); //enables the submit button
+        $('#submit_button').removeClass("disabled"); // visually ungrey the button so user knows can click. This class is found in global.css
+    }
+    else { // if no qty was selected
+        output = output + "No food item selected."; // show message to user
+        $('#submit_button').prop("disabled", true); //disables the submit button in the web page (cannot click)
+        $('#submit_button').addClass("disabled"); // visually grey out the button so user knows cannot click.
+    }
+    output = output + "</table><hr>"; // ending of table and add a horizontal rule/line.
+    // Insert the string we generated in the the #itemised div.
+    $("#itemised").html(output); // set the itemised div with generated content
 }
