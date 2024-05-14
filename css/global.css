@@ -2,25 +2,25 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 10px auto;
     min-width: 320px;
-    max-width: 1440px;    
+    max-width: 1440px;
 }
 
 header,
 #main,
-footer {        
+footer {
     margin: 10px auto;
     text-align: center;
 }
 
 #main {
-    padding:10px;
+    padding: 10px;
 }
 
 #menu {
     justify-content: center;
     list-style-type: none;
     display: flex;
-    flex-direction: column;        
+    flex-direction: column;
 }
 
 #logo {
@@ -28,54 +28,57 @@ footer {
 }
 
 #menu li a {
-    display:block;
+    display: block;
     text-decoration: none;
-    color:black; 
+    color: black;
     padding: 10px 10px;
     margin: 0px 5px;
     line-height: 1;
-    border-top:1px solid #a01548;     
+    border-top: 1px solid #a01548;
 }
 
-#menu li a:hover, #menu li a:active  {
-    color:white;
-    background-color:#a01548;
+#menu li a:hover,
+#menu li a:active {
+    color: white;
+    background-color: #a01548;
     transition: all 0.25s;
 }
 
-h1, h2, h3 {    
-    color:#a01548;
+h1,
+h2,
+h3 {
+    color: #a01548;
     text-align: center;
     font-weight: bolder;
 }
 
 h1 {
-    margin:15px 0px;
-    font-size:larger;    
+    margin: 15px 0px;
+    font-size: larger;
 }
 
 h2 {
-    margin:15px 0px;
-    font-size:large;
+    margin: 15px 0px;
+    font-size: large;
 }
 
 h3 {
-    margin:15px 0px;
-    font-size:medium;
+    margin: 15px 0px;
+    font-size: medium;
 }
 
 p {
     line-height: 1.5;
-    padding:5px;
+    padding: 5px;
 }
 
 .button {
-    color:white;
-    padding:8px 15px;
+    color: white;
+    padding: 8px 15px;
     margin: 15px;
-    background-color: #a01548;        
-    border:none;
-    border-radius: 15px;    
+    background-color: #a01548;
+    border: none;
+    border-radius: 15px;
 }
 
 .disabled {
@@ -90,34 +93,59 @@ p {
     text-align: left;
 }
 
-/* Start of Hamburger */
-nav label { 
-    display: inline-block;
-    width:95%;
-    color: black;           
-    font-size: 30px;   
-    text-align: left;    
-    padding:10px;
-}
-#hamburger {
-    display:none;
+#contactfloat {
+    position: fixed;
+    bottom: 0vh;
+    right: 10px;
 }
 
-#menu { display: none; }
-nav input:checked ~ #menu { display: flex; }
+.contactbutton {
+    background-color: #a01548;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    border-color: #a01548;
+}
+
+/* Start of Hamburger */
+nav label {
+    display: inline-block;
+    width: 95%;
+    color: black;
+    font-size: 30px;
+    text-align: left;
+    padding: 10px;
+}
+
+#hamburger {
+    display: none;
+}
+
+#menu {
+    display: none;
+}
+
+nav input:checked~#menu {
+    display: flex;
+}
 
 /* End Hamburger */
 
-@media screen and (min-width:480px) { /* Navbar is default column, changes to row when >= 480px */
+@media screen and (min-width:480px) {
+
+    /* Navbar is default column, changes to row when >= 480px */
     #menu {
-        display:flex;
+        display: flex;
         flex-direction: row;
     }
 
     #menu li a {
-        border-top:none;
+        border-top: none;
     }
 
     /* Hide hamburger */
-    nav label, #hamburger { display: none; }
+    nav label,
+    #hamburger {
+        display: none;
+    }
 }
